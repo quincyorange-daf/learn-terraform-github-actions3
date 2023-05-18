@@ -41,7 +41,7 @@ resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
-
+  tags = {var.instance_name}
   user_data = <<-EOF
               #!/bin/bash
               apt-get update
